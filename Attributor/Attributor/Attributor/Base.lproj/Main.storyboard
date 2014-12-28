@@ -28,6 +28,7 @@
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9pu-AT-0fr">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Outline">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -141,6 +142,7 @@
                     <connections>
                         <outlet property="body" destination="Dfk-6X-tgW" id="rcg-9H-x8p"/>
                         <outlet property="headline" destination="niX-om-VFc" id="xkP-AA-DNs"/>
+                        <outlet property="outlineButton" destination="9pu-AT-0fr" id="agy-gM-dR6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
