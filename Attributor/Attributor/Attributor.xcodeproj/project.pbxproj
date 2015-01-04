@@ -14,6 +14,7 @@
 		1826E8F81A50427600DFDDCF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1826E8F71A50427600DFDDCF /* Images.xcassets */; };
 		1826E8FB1A50427600DFDDCF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1826E8F91A50427600DFDDCF /* LaunchScreen.xib */; };
 		1826E9071A50427600DFDDCF /* AttributorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1826E9061A50427600DFDDCF /* AttributorTests.m */; };
+		18B103C81A59834C00092212 /* TextStatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B103C71A59834C00092212 /* TextStatsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		1826E9001A50427600DFDDCF /* AttributorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AttributorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1826E9051A50427600DFDDCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1826E9061A50427600DFDDCF /* AttributorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AttributorTests.m; sourceTree = "<group>"; };
+		18B103C61A59834C00092212 /* TextStatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextStatsViewController.h; sourceTree = "<group>"; };
+		18B103C71A59834C00092212 /* TextStatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextStatsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +87,8 @@
 				1826E8F11A50427600DFDDCF /* ViewController.h */,
 				1826E8F21A50427600DFDDCF /* ViewController.m */,
 				1826E8F41A50427600DFDDCF /* Main.storyboard */,
+				18B103C61A59834C00092212 /* TextStatsViewController.h */,
+				18B103C71A59834C00092212 /* TextStatsViewController.m */,
 				1826E8F71A50427600DFDDCF /* Images.xcassets */,
 				1826E8F91A50427600DFDDCF /* LaunchScreen.xib */,
 				1826E8EA1A50427600DFDDCF /* Supporting Files */,
@@ -222,6 +227,7 @@
 				1826E8F31A50427600DFDDCF /* ViewController.m in Sources */,
 				1826E8F01A50427600DFDDCF /* AppDelegate.m in Sources */,
 				1826E8ED1A50427600DFDDCF /* main.m in Sources */,
+				18B103C81A59834C00092212 /* TextStatsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +418,7 @@
 				1826E90C1A50427600DFDDCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1826E90D1A50427600DFDDCF /* Build configuration list for PBXNativeTarget "AttributorTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +427,7 @@
 				1826E90F1A50427600DFDDCF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
