@@ -9,8 +9,11 @@
 #import "ViewController.h"
 
 @interface ViewController ()
-
+{
+    int currentValue;
+}
 - (IBAction)showAlert:(id)sender;
+- (IBAction)sliderMoved:(id)sender;
 @end
 
 @implementation ViewController
@@ -25,7 +28,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)sliderMoved:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    NSLog(@"滑动块儿的当前数值是%f",slider.value);
+}
 - (IBAction)showAlert:(id)sender {
-    [[[UIAlertView alloc] initWithTitle:@"你好，世界" message:@"天上要掉馅儿饼啦！！" delegate:nil cancelButtonTitle:@"我来接住" otherButtonTitles:@"", nil] show];
+    [[[UIAlertView alloc] initWithTitle:@"你好，世界" message:@"天上要掉馅儿饼啦！！" delegate:nil cancelButtonTitle:@"我来接住" otherButtonTitles:@"不，我来接住", nil] show];
 }
 @end
