@@ -32,6 +32,20 @@
     self.slider.value = currentValue;
 }
 
+-(int)getDeffence
+{
+    int deffrence;
+    if (currentValue > targetValue) {
+        deffrence = currentValue - targetValue;
+    }else if (currentValue < targetValue)
+    {
+        deffrence = targetValue - currentValue;
+    }else{
+        deffrence = 0;
+    }
+    return deffrence;
+}
+
 -(void)updateLabels
 {
     self.targetLabel.text = [NSString stringWithFormat:@"%d",targetValue];
@@ -55,7 +69,8 @@
 //    UISlider *slider = (UISlider *)sender;
 //    //NSLog(@"滑动块儿的当前数值是%f",slider.value);
 //    currentValue = (int)lroundf(sender.value);
-    NSString *message = [NSString stringWithFormat:@"当前数值是%d,我们的目标数值是%d",(int)lroundf(sender.value),targetValue];
+    int deffrence = [self getDeffence];
+    NSString *message = [NSString stringWithFormat:@"当前数值是%d,我们的目标数值是%d,我们的差距是%d",(int)lroundf(sender.value),targetValue,deffrence];
     [[[UIAlertView alloc] initWithTitle:@"你好，世界" message:message delegate:nil cancelButtonTitle:@"安大是个好学校" otherButtonTitles:nil, nil]show];
     [self startNewRound];
     [self updateLabels];
