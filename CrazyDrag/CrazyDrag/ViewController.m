@@ -65,21 +65,39 @@
 }
 
 - (IBAction)sliderMoved:(UISlider *)sender {
-//    UISlider *slider = (UISlider *)sender;
-//    //NSLog(@"滑动块儿的当前数值是%f",slider.value);
-//    currentValue = (int)lroundf(sender.value);
-    int deffrence = [self getDeffence];
-    int points = 100 - deffrence;
-    score += points;
+
     
-//    NSString *message = [NSString stringWithFormat:@"当前数值是%d,我们的目标数值是%d,我们的差距是%d",(int)lroundf(sender.value),targetValue,deffrence];
-    NSString *message = [NSString stringWithFormat:@"您的得分是:%d",points];
-    [[[UIAlertView alloc] initWithTitle:@"你好，世界" message:message delegate:nil cancelButtonTitle:@"安大是个好学校" otherButtonTitles:nil, nil]show];
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
     [self startNewRound];
     [self updateLabels];
 }
+
 - (IBAction)showAlert:(id)sender {
-    [[[UIAlertView alloc] initWithTitle:@"你好，世界" message:@"天上要掉馅儿饼啦！！" delegate:nil cancelButtonTitle:@"我来接住" otherButtonTitles:@"不，我来接住", nil] show];
+    int deffrence = [self getDeffence];
+    int points = 100 - deffrence;
+    score += points;
+    NSString *title;
+    if (deffrence == 0) {
+        title = @"太棒啦！";
+        points += 100;
+    }else if (deffrence < 5)
+    {
+        title = @"very good!";
+        if (deffrence == 1) {
+            points += 50;
+        }
+    }else if (deffrence < 10)
+    {
+        title = @"good!";
+    }else
+    {
+        title = @"bad!";
+    }
+    NSString *message = [NSString stringWithFormat:@"您的得分是:%d",points];
+    [[[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"安大是个好学校" otherButtonTitles:nil, nil]show];
 }
 
 @end
