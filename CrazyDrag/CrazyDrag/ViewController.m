@@ -17,6 +17,8 @@
 }
 - (IBAction)showAlert:(id)sender;
 - (IBAction)sliderMoved:(UISlider *)sender;
+- (IBAction)restart:(id)sender;
+
 @property (strong, nonatomic) IBOutlet UISlider *slider;
 @property (strong, nonatomic) IBOutlet UILabel *targetLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
@@ -55,7 +57,7 @@
     // Do any additional setup after loading the view, typically from a nib.
 //    currentValue = self.slider.value;
 //    targetValue = 1 + (arc4random() % 100);
-    [self startNewRound];
+    [self startNewGame];
     [self updateLabels];
 }
 
@@ -65,8 +67,19 @@
 }
 
 - (IBAction)sliderMoved:(UISlider *)sender {
-
     
+}
+
+-(void)startNewGame
+{
+    score = 0;
+    round = 0;
+    [self startNewRound];
+}
+
+- (IBAction)restart:(id)sender {
+    [self startNewRound];
+    [self updateLabels];
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
