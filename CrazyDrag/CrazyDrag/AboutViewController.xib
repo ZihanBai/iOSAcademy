@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutViewController">
             <connections>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webView" destination="vud-0F-uUo" id="5B6-Wo-JK0"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,34 +26,13 @@
                         <action selector="close:" destination="-1" eventType="touchUpInside" id="eIY-hg-w9f"/>
                     </connections>
                 </button>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WPK-hF-EEM">
+                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vud-0F-uUo">
                     <rect key="frame" x="8" y="8" width="584" height="269"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <string key="text">*** 土豪真金 ***
-
-欢迎加入土豪俱乐部！修炼土豪真金的方式很简单，你只需要拖动界面中的滑动条就好了。
-
-你的目标是让滑动条的结点尽可能接近预设的分数，越接近表示你的土豪成分越高。欢迎获取真金！</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                </webView>
             </subviews>
             <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-            <constraints>
-                <constraint firstAttribute="centerY" secondItem="WPK-hF-EEM" secondAttribute="centerY" id="7cV-Dw-1DF"/>
-                <constraint firstAttribute="centerX" secondItem="WPK-hF-EEM" secondAttribute="centerX" id="8p9-7b-bl9"/>
-                <constraint firstAttribute="centerX" secondItem="WPK-hF-EEM" secondAttribute="centerX" id="Mqa-Vp-fqo"/>
-                <constraint firstAttribute="centerY" secondItem="WPK-hF-EEM" secondAttribute="centerY" constant="1" id="xtB-9F-vSj"/>
-            </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="7cV-Dw-1DF"/>
-                    <exclude reference="8p9-7b-bl9"/>
-                    <exclude reference="Mqa-Vp-fqo"/>
-                    <exclude reference="xtB-9F-vSj"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="588" y="357"/>
         </view>
     </objects>

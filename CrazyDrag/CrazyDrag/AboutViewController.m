@@ -10,14 +10,21 @@
 
 @interface AboutViewController ()
 - (IBAction)close:(id)sender;
+@property (strong, nonatomic) IBOutlet UIWebView *webView;
 
 @end
 
 @implementation AboutViewController
+@synthesize webView;
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    NSString *htmlFile = [[NSBundle mainBundle]pathForResource:@"CrazyDrag" ofType:@"html"];
+    NSData *htmlData = [NSData dataWithContentsOfFile:htmlFile];
+    NSURL *baseURL = [NSURL fileURLWithPath:[[NSBundle mainBundle]bundlePath]];
+    [self.webView loadData:htmlData MIMEType:@"text/html" textEncodingName:@"UTF-8" baseURL:baseURL];
 }
 
 - (void)didReceiveMemoryWarning {
