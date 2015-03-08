@@ -16,7 +16,9 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GRR-H7-ILi">
                     <rect key="frame" x="8" y="285" width="584" height="30"/>
+                    <color key="backgroundColor" red="0.40000000596046448" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="关闭">
+                        <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -38,13 +40,17 @@
             <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="WPK-hF-EEM" secondAttribute="centerY" id="7cV-Dw-1DF"/>
+                <constraint firstAttribute="centerX" secondItem="WPK-hF-EEM" secondAttribute="centerX" id="8p9-7b-bl9"/>
                 <constraint firstAttribute="centerX" secondItem="WPK-hF-EEM" secondAttribute="centerX" id="Mqa-Vp-fqo"/>
+                <constraint firstAttribute="centerY" secondItem="WPK-hF-EEM" secondAttribute="centerY" constant="1" id="xtB-9F-vSj"/>
             </constraints>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="7cV-Dw-1DF"/>
+                    <exclude reference="8p9-7b-bl9"/>
                     <exclude reference="Mqa-Vp-fqo"/>
+                    <exclude reference="xtB-9F-vSj"/>
                 </mask>
             </variation>
             <point key="canvasLocation" x="588" y="357"/>
