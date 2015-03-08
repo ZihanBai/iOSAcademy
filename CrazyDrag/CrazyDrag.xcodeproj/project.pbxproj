@@ -14,6 +14,8 @@
 		184B69811AA08B790058C575 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 184B69801AA08B790058C575 /* Images.xcassets */; };
 		184B69841AA08B790058C575 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184B69821AA08B790058C575 /* LaunchScreen.xib */; };
 		184B69901AA08B790058C575 /* CrazyDragTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 184B698F1AA08B790058C575 /* CrazyDragTests.m */; };
+		189643DE1AAC65C60049FE21 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189643DC1AAC65C60049FE21 /* AboutViewController.m */; };
+		189643DF1AAC65C60049FE21 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189643DD1AAC65C60049FE21 /* AboutViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		184B69891AA08B790058C575 /* CrazyDragTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrazyDragTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		184B698E1AA08B790058C575 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		184B698F1AA08B790058C575 /* CrazyDragTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrazyDragTests.m; sourceTree = "<group>"; };
+		189643DB1AAC65C60049FE21 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		189643DC1AAC65C60049FE21 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		189643DD1AAC65C60049FE21 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +91,9 @@
 				184B697A1AA08B790058C575 /* ViewController.h */,
 				184B697B1AA08B790058C575 /* ViewController.m */,
 				184B697D1AA08B790058C575 /* Main.storyboard */,
+				189643DB1AAC65C60049FE21 /* AboutViewController.h */,
+				189643DC1AAC65C60049FE21 /* AboutViewController.m */,
+				189643DD1AAC65C60049FE21 /* AboutViewController.xib */,
 				184B69801AA08B790058C575 /* Images.xcassets */,
 				184B69821AA08B790058C575 /* LaunchScreen.xib */,
 				184B69731AA08B790058C575 /* Supporting Files */,
@@ -201,6 +209,7 @@
 			files = (
 				184B697F1AA08B790058C575 /* Main.storyboard in Resources */,
 				184B69841AA08B790058C575 /* LaunchScreen.xib in Resources */,
+				189643DF1AAC65C60049FE21 /* AboutViewController.xib in Resources */,
 				184B69811AA08B790058C575 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +230,7 @@
 			files = (
 				184B697C1AA08B790058C575 /* ViewController.m in Sources */,
 				184B69791AA08B790058C575 /* AppDelegate.m in Sources */,
+				189643DE1AAC65C60049FE21 /* AboutViewController.m in Sources */,
 				184B69761AA08B790058C575 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -412,6 +422,7 @@
 				184B69951AA08B790058C575 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		184B69961AA08B790058C575 /* Build configuration list for PBXNativeTarget "CrazyDragTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +431,7 @@
 				184B69981AA08B790058C575 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

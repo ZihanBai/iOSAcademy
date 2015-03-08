@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AboutViewController.h"
 
 @interface ViewController ()
 {
@@ -18,6 +19,7 @@
 - (IBAction)showAlert:(id)sender;
 - (IBAction)sliderMoved:(UISlider *)sender;
 - (IBAction)restart:(id)sender;
+- (IBAction)showInfo:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UISlider *slider;
 @property (strong, nonatomic) IBOutlet UILabel *targetLabel;
@@ -80,6 +82,12 @@
 - (IBAction)restart:(id)sender {
     [self startNewRound];
     [self updateLabels];
+}
+
+- (IBAction)showInfo:(id)sender {
+    AboutViewController *controller = [[AboutViewController alloc]initWithNibName:@"AboutViewController" bundle:nil];
+    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
