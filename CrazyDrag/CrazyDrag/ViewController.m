@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AboutViewController.h"
+#import <AVFoundation/AVFoundation.h>
 
 @interface ViewController ()
 {
@@ -25,6 +26,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *targetLabel;
 @property (strong, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (strong, nonatomic) IBOutlet UILabel *roundLabel;
+@property (strong,nonatomic)AVAudioPlayer *audioPlayer;
 
 @end
 
@@ -33,9 +35,27 @@
 @synthesize slider;
 @synthesize targetLabel;
 @synthesize scoreLabel;
+@synthesize audioPlayer;
+
+-(void)playBackgroundMusic
+{
+    NSString *musicPath = [[NSBundle mainBundle]pathForResource:@"no" ofType:@"mp3"];
+    NSURL *url = [NSURL fileURLWithPath:musicPath];
+    NSError *error;
+    audioPlayer = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
+    audioPlayer.numberOfLoops = 1;
+    if (audioPlayer == nil) {
+        NSString *errorInfo = [NSString stringWithString:[error description]];
+        NSLog(@"the error is %@",errorInfo);
+    }else{
+        [audioPlayer play];
+    }
+}
 
 -(void)startNewRound
 {
+    
+    
     targetValue = 1 + (arc4random() % 100);
     currentValue = 50;
     self.slider.value = currentValue;
@@ -62,6 +82,7 @@
     [self setMoveSliderProperties];
     [self startNewGame];
     [self updateLabels];
+    [self playBackgroundMusic];
 }
 
 -(void)setMoveSliderProperties
@@ -93,11 +114,18 @@
     score = 0;
     round = 0;
     [self startNewRound];
+    
 }
 
 - (IBAction)restart:(id)sender {
+    CATransition *transition = [CATransition animation];
+    transition.type = kCATransitionFade;
+    transition.duration = 3;
+    transition.timingFunction  = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [self startNewGame];
     [self updateLabels];
+    [self.view.layer addAnimation:transition forKey:nil];
+
 }
 
 - (IBAction)showInfo:(id)sender {
