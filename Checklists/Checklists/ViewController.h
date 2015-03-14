@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UITableViewController
+- (IBAction)addItem:(id)sender;
 
 
 @end
