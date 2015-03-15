@@ -49,18 +49,33 @@
         <scene sceneID="mgN-bz-gXK">
             <objects>
                 <tableViewController id="t3n-ri-Yhr" customClass="AddItemViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="sP7-9I-AXL">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sP7-9I-AXL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kLH-da-Dor">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kLH-da-Dor" id="0sh-C6-9MY">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="A8x-Sn-SsV">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="kLH-da-Dor">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kLH-da-Dor" id="0sh-C6-9MY">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of Item" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l7k-lJ-PvT">
+                                                    <rect key="frame" x="8" y="7" width="584" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                                    <connections>
+                                                        <action selector="done:" destination="t3n-ri-Yhr" eventType="editingDidEndOnExit" id="62e-84-Iml"/>
+                                                        <outlet property="delegate" destination="t3n-ri-Yhr" id="b68-6C-7np"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
                         <connections>
                             <outlet property="dataSource" destination="t3n-ri-Yhr" id="kN5-q1-BsO"/>
                             <outlet property="delegate" destination="t3n-ri-Yhr" id="yo7-ML-27N"/>
@@ -72,12 +87,16 @@
                                 <action selector="cancel:" destination="t3n-ri-Yhr" id="gr7-ei-7Ax"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Z5X-cN-Izo">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="Z5X-cN-Izo">
                             <connections>
                                 <action selector="done:" destination="t3n-ri-Yhr" id="DEV-HE-bY0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="doneBarButton" destination="Z5X-cN-Izo" id="Qgr-2D-q4G"/>
+                        <outlet property="textField" destination="l7k-lJ-PvT" id="ckI-Fh-b2n"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VlS-B6-4eG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
