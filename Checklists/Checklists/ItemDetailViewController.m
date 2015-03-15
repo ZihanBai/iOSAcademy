@@ -1,18 +1,18 @@
 //
-//  AddItemViewController.m
+//  ItemDetailViewController.m
 //  Checklists
 //
 //  Created by baizihan on 3/15/15.
 //  Copyright (c) 2015 柏梓涵个人作品. All rights reserved.
 //
 
-#import "AddItemViewController.h"
+#import "ItemDetailViewController.h"
 #import "ChecklistItem.h"
-@interface AddItemViewController ()
+@interface ItemDetailViewController ()
 
 @end
 
-@implementation AddItemViewController
+@implementation ItemDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,7 +36,7 @@
 
 
 - (IBAction)cancel:(id)sender {
-    [self.delegate addItemViewControllerDidCancel:self];
+    [self.delegate ItemDetailViewControllerDidCancel:self];
 }
 
 - (IBAction)done:(id)sender {
@@ -44,10 +44,10 @@
         ChecklistItem *item = [[ChecklistItem alloc]init];
         item.text = self.textField.text;
         item.checked = NO;
-        [self.delegate addItemViewController:self didFinishAddingItem:item];
+        [self.delegate ItemDetailViewController:self didFinishAddingItem:item];
     }else{
         self.itemToEdit.text = self.textField.text;
-        [self.delegate addItemViewController:self didFinishEditingItem:self.itemToEdit];
+        [self.delegate ItemDetailViewController:self didFinishEditingItem:self.itemToEdit];
     }
     
 }
