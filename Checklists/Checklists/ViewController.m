@@ -19,8 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"文件夹的路径是：%@",[self documentsDirectory]);
-    NSLog(@"文件的最终输出路径是：%@",[self dataFilePath]);
     _items = [[NSMutableArray alloc]initWithCapacity:20];
     ChecklistItem *item = [[ChecklistItem alloc]init];
     item.text = @"你有如下待办事项：";
@@ -55,6 +53,14 @@
 
 -(NSString *)dataFilePath{
     return [[self documentsDirectory]stringByAppendingPathComponent:@"Checklists.plist"];
+}
+
+-(void)saveChecklistsItems{
+    NSMutableData *data = [[NSMutableData alloc]init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
+    [archiver encodeObject:_items forKey:@"ChecklistsItems"];
+    [archiver finishEncoding];
+    [data writeToFile:[self dataFilePath] atomically:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -113,6 +119,7 @@
     ChecklistItem *item = _items[indexPath.row];
     [item toggleChecked];
     [self configureCheckmarkForCell:cell withChecklistItem:item];
+    [self saveChecklistsItems];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -131,6 +138,7 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [_items removeObjectAtIndex:indexPath.row];
+    [self saveChecklistsItems];
     NSArray *indexPaths = @[indexPath];
     [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -145,6 +153,7 @@
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
     NSArray *indexPaths = @ [indexPath];
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self saveChecklistsItems];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -152,7 +161,7 @@
     NSInteger index = [_items indexOfObject:item];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    
+    [self saveChecklistsItems];
     [self configureCheckmarkForCell:cell withChecklistItem:item];
     [self configureTextForCell:cell withChecklistItem:item];
     [self dismissViewControllerAnimated:YES completion:nil];
