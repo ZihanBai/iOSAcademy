@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"文件夹的路径是：%@",[self documentsDirectory]);
+    NSLog(@"文件的最终输出路径是：%@",[self dataFilePath]);
     _items = [[NSMutableArray alloc]initWithCapacity:20];
     ChecklistItem *item = [[ChecklistItem alloc]init];
     item.text = @"你有如下待办事项：";
@@ -43,6 +45,16 @@
     item.text = @"逛动物园";
     item.checked = NO;
     [_items addObject:item];
+}
+
+-(NSString *)documentsDirectory{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths firstObject];
+    return documentsDirectory;
+}
+
+-(NSString *)dataFilePath{
+    return [[self documentsDirectory]stringByAppendingPathComponent:@"Checklists.plist"];
 }
 
 - (void)didReceiveMemoryWarning {
