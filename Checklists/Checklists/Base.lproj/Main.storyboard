@@ -19,14 +19,16 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mWu-Sh-UHZ" id="njo-MW-UUJ">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TQ-PB-n9k">
-                                            <rect key="frame" x="59" y="8" width="533" height="28"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TQ-PB-n9k">
+                                            <rect key="frame" x="59" y="8" width="533" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="4Eq-hh-eT5"/>
                                                 <constraint firstAttribute="height" constant="28" id="RCP-0m-I6u"/>
                                                 <constraint firstAttribute="width" constant="533" id="UYj-8Q-6g5"/>
                                                 <constraint firstAttribute="width" constant="533" id="cZL-TB-B87"/>
+                                                <constraint firstAttribute="width" constant="533" id="dmB-9p-tSc"/>
                                                 <constraint firstAttribute="height" constant="28" id="dqz-fv-2bG"/>
+                                                <constraint firstAttribute="height" constant="29" id="rF4-YV-hZs"/>
                                                 <constraint firstAttribute="width" constant="533" id="sIU-pB-XkG"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,24 +39,33 @@
                                                     <exclude reference="4Eq-hh-eT5"/>
                                                     <exclude reference="RCP-0m-I6u"/>
                                                     <exclude reference="UYj-8Q-6g5"/>
+                                                    <exclude reference="cZL-TB-B87"/>
+                                                    <exclude reference="dqz-fv-2bG"/>
                                                     <exclude reference="sIU-pB-XkG"/>
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giz-Rb-NWV">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="√" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giz-Rb-NWV">
                                             <rect key="frame" x="25" y="11" width="26" height="21"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="giz-Rb-NWV" firstAttribute="leading" secondItem="njo-MW-UUJ" secondAttribute="leadingMargin" constant="17" id="Aze-ee-6dt"/>
+                                        <constraint firstItem="7TQ-PB-n9k" firstAttribute="top" secondItem="njo-MW-UUJ" secondAttribute="topMargin" id="ERv-tR-4eT"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="7TQ-PB-n9k" secondAttribute="bottom" constant="0.5" id="Ibd-Vc-uoa"/>
                                         <constraint firstAttribute="centerY" secondItem="7TQ-PB-n9k" secondAttribute="centerY" constant="0.25" id="JXN-oE-wEe"/>
                                         <constraint firstAttribute="centerX" secondItem="7TQ-PB-n9k" secondAttribute="centerX" constant="-59" id="Kqx-F9-v6h"/>
+                                        <constraint firstItem="7TQ-PB-n9k" firstAttribute="leading" secondItem="giz-Rb-NWV" secondAttribute="trailing" constant="8" id="L8a-sw-NQf"/>
+                                        <constraint firstItem="giz-Rb-NWV" firstAttribute="top" secondItem="njo-MW-UUJ" secondAttribute="topMargin" constant="3" id="NXZ-8e-tr3"/>
+                                        <constraint firstItem="7TQ-PB-n9k" firstAttribute="bottom" secondItem="njo-MW-UUJ" secondAttribute="bottomMargin" id="Tu4-ew-fZN"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="giz-Rb-NWV" secondAttribute="bottom" constant="5" id="ZHs-6f-cCN"/>
                                         <constraint firstAttribute="centerY" secondItem="7TQ-PB-n9k" secondAttribute="centerY" id="cFV-oD-aKb"/>
                                         <constraint firstAttribute="centerX" secondItem="7TQ-PB-n9k" secondAttribute="centerX" id="eb0-ch-YuI"/>
                                         <constraint firstItem="7TQ-PB-n9k" firstAttribute="top" secondItem="njo-MW-UUJ" secondAttribute="topMargin" id="fUd-TQ-0X3"/>
+                                        <constraint firstItem="7TQ-PB-n9k" firstAttribute="leading" secondItem="njo-MW-UUJ" secondAttribute="leadingMargin" constant="51" id="hdb-5g-Qdh"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="7TQ-PB-n9k" secondAttribute="bottom" constant="0.5" id="tEQ-zD-93x"/>
                                         <constraint firstItem="7TQ-PB-n9k" firstAttribute="top" secondItem="njo-MW-UUJ" secondAttribute="topMargin" id="yW9-Hl-RJz"/>
                                     </constraints>
@@ -63,6 +74,8 @@
                                             <exclude reference="Ibd-Vc-uoa"/>
                                             <exclude reference="JXN-oE-wEe"/>
                                             <exclude reference="Kqx-F9-v6h"/>
+                                            <exclude reference="cFV-oD-aKb"/>
+                                            <exclude reference="eb0-ch-YuI"/>
                                             <exclude reference="fUd-TQ-0X3"/>
                                             <exclude reference="tEQ-zD-93x"/>
                                             <exclude reference="yW9-Hl-RJz"/>
@@ -98,7 +111,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="sP7-9I-AXL">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection id="A8x-Sn-SsV">
                                 <cells>

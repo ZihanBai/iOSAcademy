@@ -38,11 +38,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _items = [[NSMutableArray alloc]initWithCapacity:20];
     ChecklistItem *item = [[ChecklistItem alloc]init];
-    item.text = @"test";
+    item.text = @"你有如下待办事项：";
     item.checked = YES;
     [_items addObject:item];
-    self.tableView.rowHeight = 44;
 }
 
 -(NSString *)documentsDirectory{
@@ -156,15 +156,6 @@
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     [self saveChecklistsItems];
     [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 100;
-}
-
--(CGFloat)tableView:(UITableView *)tableView estimateHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 100;
 }
 
 -(void)ItemDetailViewController:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistItem *)item{
