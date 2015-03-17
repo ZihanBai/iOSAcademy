@@ -17,32 +17,32 @@
     NSMutableArray *_items;
 }
 
+-(void)loadChecklistItems{
+    NSString *path = [self dataFilePath];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:path]) {
+        NSData *data = [[NSData alloc]initWithContentsOfFile:path];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]initForReadingWithData:data];
+        _items = [unarchiver decodeObjectForKey:@"ChecklistItems"];
+        [unarchiver finishDecoding];
+    }else{
+        _items = [[NSMutableArray alloc]initWithCapacity:20];
+    }
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    if ((self = [super initWithCoder:aDecoder])) {
+        [self loadChecklistItems];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _items = [[NSMutableArray alloc]initWithCapacity:20];
     ChecklistItem *item = [[ChecklistItem alloc]init];
-    item.text = @"你有如下待办事项：";
-    item.checked = NO;
+    item.text = @"test";
+    item.checked = YES;
     [_items addObject:item];
-    
-    item = [[ChecklistItem alloc]init];
-    item.text = @"吃大餐";;
-    item.checked = NO;
-    
-    item = [[ChecklistItem alloc]init];
-    item.text = @"洗澡";
-    item.checked = NO;
-    [_items addObject:item];
-    
-    item = [[ChecklistItem alloc]init];
-    item.text = @"上班";
-    item.checked = NO;
-    [_items addObject:item];
-    
-    item = [[ChecklistItem alloc]init];
-    item.text = @"逛动物园";
-    item.checked = NO;
-    [_items addObject:item];
+    self.tableView.rowHeight = 44;
 }
 
 -(NSString *)documentsDirectory{
@@ -152,9 +152,19 @@
     [_items addObject:item];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
     NSArray *indexPaths = @ [indexPath];
+    
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     [self saveChecklistsItems];
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView estimateHeightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
 }
 
 -(void)ItemDetailViewController:(ItemDetailViewController *)controller didFinishEditingItem:(ChecklistItem *)item{

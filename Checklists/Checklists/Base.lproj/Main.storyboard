@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ka5-ru-t1E">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Checklists-->
         <scene sceneID="nLM-KR-Us0">
             <objects>
                 <tableViewController id="wmp-wP-7xp" customClass="ViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dYB-dr-BwW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="22" sectionFooterHeight="22" id="dYB-dr-BwW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -18,11 +19,27 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mWu-Sh-UHZ" id="njo-MW-UUJ">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TQ-PB-n9k">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TQ-PB-n9k">
                                             <rect key="frame" x="59" y="8" width="533" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="28" id="4Eq-hh-eT5"/>
+                                                <constraint firstAttribute="height" constant="28" id="RCP-0m-I6u"/>
+                                                <constraint firstAttribute="width" constant="533" id="UYj-8Q-6g5"/>
+                                                <constraint firstAttribute="width" constant="533" id="cZL-TB-B87"/>
+                                                <constraint firstAttribute="height" constant="28" id="dqz-fv-2bG"/>
+                                                <constraint firstAttribute="width" constant="533" id="sIU-pB-XkG"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="4Eq-hh-eT5"/>
+                                                    <exclude reference="RCP-0m-I6u"/>
+                                                    <exclude reference="UYj-8Q-6g5"/>
+                                                    <exclude reference="sIU-pB-XkG"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1001" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giz-Rb-NWV">
                                             <rect key="frame" x="25" y="11" width="26" height="21"/>
@@ -31,6 +48,26 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="7TQ-PB-n9k" secondAttribute="bottom" constant="0.5" id="Ibd-Vc-uoa"/>
+                                        <constraint firstAttribute="centerY" secondItem="7TQ-PB-n9k" secondAttribute="centerY" constant="0.25" id="JXN-oE-wEe"/>
+                                        <constraint firstAttribute="centerX" secondItem="7TQ-PB-n9k" secondAttribute="centerX" constant="-59" id="Kqx-F9-v6h"/>
+                                        <constraint firstAttribute="centerY" secondItem="7TQ-PB-n9k" secondAttribute="centerY" id="cFV-oD-aKb"/>
+                                        <constraint firstAttribute="centerX" secondItem="7TQ-PB-n9k" secondAttribute="centerX" id="eb0-ch-YuI"/>
+                                        <constraint firstItem="7TQ-PB-n9k" firstAttribute="top" secondItem="njo-MW-UUJ" secondAttribute="topMargin" id="fUd-TQ-0X3"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="7TQ-PB-n9k" secondAttribute="bottom" constant="0.5" id="tEQ-zD-93x"/>
+                                        <constraint firstItem="7TQ-PB-n9k" firstAttribute="top" secondItem="njo-MW-UUJ" secondAttribute="topMargin" id="yW9-Hl-RJz"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Ibd-Vc-uoa"/>
+                                            <exclude reference="JXN-oE-wEe"/>
+                                            <exclude reference="Kqx-F9-v6h"/>
+                                            <exclude reference="fUd-TQ-0X3"/>
+                                            <exclude reference="tEQ-zD-93x"/>
+                                            <exclude reference="yW9-Hl-RJz"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="ghb-tC-eMw" kind="presentation" identifier="EditItem" trigger="accessoryAction" id="8xY-Va-cCF"/>
