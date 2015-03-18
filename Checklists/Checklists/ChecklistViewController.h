@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ItemDetailViewController.h"
-@interface ViewController : UITableViewController<ItemDetailViewControllerDelegate>
+@interface ChecklistViewController : UITableViewController<ItemDetailViewControllerDelegate>
 - (IBAction)addItem:(id)sender;
 
 
