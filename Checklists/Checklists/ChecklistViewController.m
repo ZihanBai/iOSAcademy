@@ -8,7 +8,7 @@
 
 #import "ChecklistViewController.h"
 #import "ChecklistItem.h"
-
+#import "Checklist.h"
 @interface ChecklistViewController ()
 
 @end
@@ -43,6 +43,7 @@
     item.text = @"你有如下待办事项：";
     item.checked = YES;
     [_items addObject:item];
+    self.title = self.checklist.name;
 }
 
 -(NSString *)documentsDirectory{
