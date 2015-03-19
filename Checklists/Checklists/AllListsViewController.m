@@ -9,6 +9,7 @@
 #import "AllListsViewController.h"
 #import "Checklist.h"
 #import "ChecklistViewController.h"
+#import "ChecklistItem.h"
 @interface AllListsViewController ()
 
 @end
@@ -17,25 +18,40 @@
     NSMutableArray *_lists;
 }
 
+#pragma mark 数据加载和保存
+-(NSString *)documentsDirectory{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths firstObject];
+    NSLog(@"documentsDirectory: %@",documentsDirectory);
+    return documentsDirectory;
+}
+
+-(NSString *)dataFilePath{
+    return [[self documentsDirectory]stringByAppendingPathComponent:@"Checklist.plist"];
+}
+
+-(void)saveChecklists{
+    NSMutableData *data = [[NSMutableData alloc]init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]initForWritingWithMutableData:data];
+    [archiver encodeObject:_lists forKey:@"Checklists"];
+    [data writeToFile:[self dataFilePath] atomically:YES];
+}
+
+-(void)loadChecklists{
+    NSString *path = [self dataFilePath];
+    if ([[NSFileManager defaultManager]fileExistsAtPath:path]) {
+        NSData *data = [[NSData alloc]initWithContentsOfFile:path];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:data];
+        _lists = [unarchiver decodeObjectForKey:@"Checklists"];
+        [unarchiver finishDecoding];
+    }else{
+        _lists = [[NSMutableArray alloc]initWithCapacity:20];
+    }
+}
+
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if ((self = [super initWithCoder:aDecoder])) {
-        _lists = [[NSMutableArray alloc]initWithCapacity:20];
-        Checklist *list;
-        list = [[Checklist alloc]init];
-        list.name = @"娱乐";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc]init];
-        list.name = @"工作";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc]init];
-        list.name = @"学习";
-        [_lists addObject:list];
-        
-        list = [[Checklist alloc]init];
-        list.name = @"家庭";
-        [_lists addObject:list];
+        [self loadChecklists];
     }
     return self;
 }
@@ -43,11 +59,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -83,40 +94,6 @@
     Checklist *checklist = _lists[indexPath.row];
     [self performSegueWithIdentifier:@"ShowChecklist" sender:checklist];
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 
 #pragma mark - Navigation

@@ -22,6 +22,7 @@
         self.textField.text = self.checklistToEdit.name;
         self.doneBarButton.enabled = YES;
     }
+    self.tableView.rowHeight = 44;
 }
 
 -(void)viewWillAppear:(BOOL)animated{
