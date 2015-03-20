@@ -35,20 +35,8 @@
     // Dispose of any resources that can be recreated.
 }
 
--(IBAction)cancel:(id)sender{
+- (IBAction)cancel:(id)sender {
     [self.delegate listDetailViewControllerDidCancel:self];
-}
-
--(IBAction)done:(id)sender{
-    NSLog(@"done");
-    if (self.checklistToEdit == nil) {
-        Checklist *checklist = [[Checklist alloc]init];
-        checklist.name = self.textField.text;
-        [self.delegate listDetailViewController:self didFinishAdding:checklist];
-    }else{
-        self.checklistToEdit.name = self.textField.text;
-        [self.delegate listDetailViewController:self didFinishEditing:self.checklistToEdit];
-    }
 }
 
 -(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -59,5 +47,16 @@
     NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
     self.doneBarButton.enabled = ([newText length] > 0);
     return YES;
+}
+- (IBAction)done:(id)sender {
+    NSLog(@"done");
+    if (self.checklistToEdit == nil) {
+        Checklist *checklist = [[Checklist alloc]init];
+        checklist.name = self.textField.text;
+        [self.delegate listDetailViewController:self didFinishAdding:checklist];
+    }else{
+        self.checklistToEdit.name = self.textField.text;
+        [self.delegate listDetailViewController:self didFinishEditing:self.checklistToEdit];
+    }
 }
 @end

@@ -27,7 +27,7 @@
 @property (nonatomic,weak)id<ListDetailViewControllerDelegate>delegate;
 @property (nonatomic,strong)Checklist *checklistToEdit;
 
--(IBAction)cancel:(id)sender;
--(IBAction)done:(id)sender;
+- (IBAction)done:(id)sender;
+- (IBAction)cancel:(id)sender;
 
 @end

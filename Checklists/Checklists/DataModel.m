@@ -7,7 +7,7 @@
 //
 
 #import "DataModel.h"
-
+#import "Checklist.h"
 @implementation DataModel
 -(NSString *)documentsDirectory{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentationDirectory, NSUserDomainMask, YES);
@@ -40,10 +40,30 @@
     }
 }
 
+-(NSInteger)indexOfSelectedChecklist{
+    return [[NSUserDefaults standardUserDefaults]integerForKey:@"ChecklistIndex"];
+}
+
+-(void)setIndexOfSelectedChecklist:(NSInteger)index{
+    [[NSUserDefaults standardUserDefaults]setInteger:index forKey:@"ChecklistIndex"];
+}
+
+-(void)registerDefaults{
+    NSDictionary *dictionary = @{@"ChecklistIndex":@-1};
+    [[NSUserDefaults standardUserDefaults]registerDefaults:dictionary];
+}
+
 -(id)init{
     if ((self = [super init])) {
-        [self loadChecklists];
+        //[self loadChecklists];
+        self.lists = [[NSMutableArray alloc]initWithCapacity:20];
+        Checklist *list = [[Checklist alloc]init];
+        list.name = @"test";
+        [self.lists addObject:list];
+        [self registerDefaults];
     }
     return self;
 }
+
+
 @end

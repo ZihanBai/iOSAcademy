@@ -337,12 +337,12 @@
                     <navigationItem key="navigationItem" title="Add Checklist" id="eWK-3a-URU">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="W6i-XO-wNu">
                             <connections>
-                                <action selector="cancel:" destination="aBF-ni-TZh" id="tuq-FO-ZqY"/>
+                                <action selector="cancel:" destination="aBF-ni-TZh" id="ODK-ox-bWU"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="done" id="1Hn-rp-lAS">
                             <connections>
-                                <action selector="done:" destination="aBF-ni-TZh" id="D5N-8v-a2O"/>
+                                <action selector="done:" destination="aBF-ni-TZh" id="Blg-jZ-3uL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
