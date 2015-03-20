@@ -14,6 +14,7 @@
 		183E6CFB1AAF2F95009C2CB5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 183E6CFA1AAF2F95009C2CB5 /* Images.xcassets */; };
 		183E6CFE1AAF2F95009C2CB5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183E6CFC1AAF2F95009C2CB5 /* LaunchScreen.xib */; };
 		183E6D0A1AAF2F95009C2CB5 /* ChecklistsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 183E6D091AAF2F95009C2CB5 /* ChecklistsTests.m */; };
+		185CEA5E1ABC501000D48701 /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 185CEA5D1ABC501000D48701 /* DataModel.m */; };
 		186EC9F91AB9A12B0096962F /* AllListsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186EC9F81AB9A12B0096962F /* AllListsViewController.m */; };
 		186EC9FC1AB9A5000096962F /* Checklist.m in Sources */ = {isa = PBXBuildFile; fileRef = 186EC9FB1AB9A5000096962F /* Checklist.m */; };
 		186EC9FF1AB9AD7F0096962F /* ListDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 186EC9FE1AB9AD7F0096962F /* ListDetailViewController.m */; };
@@ -45,6 +46,8 @@
 		183E6D031AAF2F95009C2CB5 /* ChecklistsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChecklistsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		183E6D081AAF2F95009C2CB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		183E6D091AAF2F95009C2CB5 /* ChecklistsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChecklistsTests.m; sourceTree = "<group>"; };
+		185CEA5C1ABC501000D48701 /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		185CEA5D1ABC501000D48701 /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 		186EC9F71AB9A12B0096962F /* AllListsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllListsViewController.h; sourceTree = "<group>"; };
 		186EC9F81AB9A12B0096962F /* AllListsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllListsViewController.m; sourceTree = "<group>"; };
 		186EC9FA1AB9A5000096962F /* Checklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Checklist.h; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				186EC9FB1AB9A5000096962F /* Checklist.m */,
 				186EC9FD1AB9AD7F0096962F /* ListDetailViewController.h */,
 				186EC9FE1AB9AD7F0096962F /* ListDetailViewController.m */,
+				185CEA5C1ABC501000D48701 /* DataModel.h */,
+				185CEA5D1ABC501000D48701 /* DataModel.m */,
 			);
 			path = Checklists;
 			sourceTree = "<group>";
@@ -246,6 +251,7 @@
 			files = (
 				183E6CF61AAF2F95009C2CB5 /* ChecklistViewController.m in Sources */,
 				183E6CF31AAF2F95009C2CB5 /* AppDelegate.m in Sources */,
+				185CEA5E1ABC501000D48701 /* DataModel.m in Sources */,
 				186EC9F91AB9A12B0096962F /* AllListsViewController.m in Sources */,
 				186EC9FF1AB9AD7F0096962F /* ListDetailViewController.m in Sources */,
 				183E6CF01AAF2F95009C2CB5 /* main.m in Sources */,

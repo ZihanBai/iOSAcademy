@@ -40,6 +40,7 @@
 }
 
 -(IBAction)done:(id)sender{
+    NSLog(@"done");
     if (self.checklistToEdit == nil) {
         Checklist *checklist = [[Checklist alloc]init];
         checklist.name = self.textField.text;
