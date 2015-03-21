@@ -83,15 +83,11 @@
 
 
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
     if ([segue.identifier isEqualToString:@"ShowChecklist"]) {
         ChecklistViewController *controller = segue.destinationViewController;
         controller.checklist = sender;
-    }else if ([segue.identifier isEqualToString:@"AddChecklist"]){
+    }else if ([segue.identifier isEqualToString:@"AddCheckList"]){
         UINavigationController *navigationController = segue.destinationViewController;
         ListDetailViewController *controller = (ListDetailViewController *)navigationController.topViewController;
         controller.delegate = self;
