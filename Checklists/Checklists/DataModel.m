@@ -64,6 +64,10 @@
     }
 }
 
+-(void)reloadData{
+    [self loadChecklists];
+}
+
 -(id)init{
     if ((self = [super init])) {
         //[self loadChecklists];
