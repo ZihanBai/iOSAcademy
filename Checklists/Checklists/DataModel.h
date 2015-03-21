@@ -14,6 +14,6 @@
 -(void)saveChecklists;
 -(NSInteger)indexOfSelectedChecklist;
 -(void)setIndexOfSelectedChecklist:(NSInteger)index;
--(void)reloadData;
+-(void)sortChecklists;
 
 @end

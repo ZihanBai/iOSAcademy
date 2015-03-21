@@ -64,8 +64,8 @@
     }
 }
 
--(void)reloadData{
-    [self loadChecklists];
+-(void)sortChecklists{
+    [self.lists sortUsingSelector:@selector(compare:)];
 }
 
 -(id)init{

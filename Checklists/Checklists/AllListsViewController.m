@@ -25,7 +25,7 @@
 
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.dataModel reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,8 +55,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
@@ -72,6 +70,7 @@
     }else{
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%d Remaining",[checklist countUncheckedItems]];
     }
+    cell.imageView.image = [UIImage imageNamed:checklist.iconName];
     return cell;
 }
 
@@ -106,19 +105,15 @@
 
 -(void)listDetailViewController:(ListDetailViewController *)controller didFinishAdding:(Checklist *)checklist{
     NSLog(@"didFinishAdding");
-    NSInteger newRowIndex = [self.dataModel.lists count];
     [self.dataModel.lists addObject:checklist];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
-    NSArray *indexPaths = @[indexPath];
-    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.dataModel sortChecklists];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)listDetailViewController:(ListDetailViewController *)controller didFinishEditing:(Checklist *)checklist{
-    NSInteger index = [self.dataModel.lists indexOfObject:checklist];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.textLabel.text = checklist.name;
+    [self.dataModel sortChecklists];
+    [self.tableView reloadData];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
