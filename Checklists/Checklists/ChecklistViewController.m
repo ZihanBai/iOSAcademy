@@ -31,17 +31,13 @@
 }
 
 -(void)configureCheckmarkForCell:(UITableViewCell *)cell withChecklistItem:(ChecklistItem *)item{
-//    if (item.checked) {
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//    }else{
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//    }
     UILabel *label = (UILabel *)[cell viewWithTag:1001];
     if (item.checked) {
         label.text = @"√";
     }else if(!item.checked){
         label.text = @"";
     }
+    label.textColor = self.view.tintColor;
 }
 
 -(void)configureTextForCell:(UITableViewCell *)cell withChecklistItem:(ChecklistItem *)item{
