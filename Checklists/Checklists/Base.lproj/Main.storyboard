@@ -185,16 +185,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kxg-xb-kMZ" id="Fz7-LA-zDS">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nF6-XT-gt1">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nF6-XT-gt1">
                                                     <rect key="frame" x="543" y="8" width="51" height="31"/>
                                                 </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remind Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b1-1a-3Bj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remind Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7b1-1a-3Bj">
                                                     <rect key="frame" x="8" y="11" width="88" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7b1-1a-3Bj" firstAttribute="leading" secondItem="Fz7-LA-zDS" secondAttribute="leadingMargin" id="7QF-jv-uaQ"/>
+                                                <constraint firstItem="nF6-XT-gt1" firstAttribute="top" secondItem="7b1-1a-3Bj" secondAttribute="bottom" constant="-24" id="WGG-YR-6aW"/>
+                                                <constraint firstItem="7b1-1a-3Bj" firstAttribute="top" secondItem="Fz7-LA-zDS" secondAttribute="topMargin" constant="3" id="a0F-Wm-Nqn"/>
+                                                <constraint firstItem="nF6-XT-gt1" firstAttribute="top" secondItem="Fz7-LA-zDS" secondAttribute="topMargin" id="gJJ-lK-XlB"/>
+                                                <constraint firstItem="nF6-XT-gt1" firstAttribute="trailing" secondItem="Fz7-LA-zDS" secondAttribute="trailingMargin" id="ty5-NG-V7V"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="AvU-aA-niB" detailTextLabel="r8O-93-FV5" style="IBUITableViewCellStyleValue1" id="Ys2-59-PCt">

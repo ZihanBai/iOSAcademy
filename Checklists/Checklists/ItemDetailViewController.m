@@ -51,7 +51,7 @@
         [self.tableView beginUpdates];
         
         [self.tableView reloadRowsAtIndexPaths:@[indexPathDateRow] withRowAnimation:UITableViewRowAnimationNone];
-        [self.tableView reloadRowsAtIndexPaths:@[indexPathDatePicker] withRowAnimation:UITableViewRowAnimationFade];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPathDatePicker] withRowAnimation:UITableViewRowAnimationFade];
         
         [self.tableView endUpdates];
     }
@@ -165,11 +165,13 @@
         item.checked = NO;
         item.shouldRemind = self.switchControl.on;
         item.dueDate = _dueDate;
+        [item scheduleNotification];
         [self.delegate ItemDetailViewController:self didFinishAddingItem:item];
     }else{
         self.itemToEdit.text = self.textField.text;
         self.itemToEdit.shouldRemind = self.switchControl.on;
         self.itemToEdit.dueDate = _dueDate;
+        [self.itemToEdit scheduleNotification];
         [self.delegate ItemDetailViewController:self didFinishEditingItem:self.itemToEdit];
     }
     

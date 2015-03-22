@@ -24,7 +24,10 @@
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     AllListsViewController *controller = navigationController.viewControllers[0];
     controller.dataModel = _dataModel;
-    
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound categories:nil]];
+    }
     return YES;
 }
 
