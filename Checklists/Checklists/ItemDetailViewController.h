@@ -19,10 +19,15 @@
 @end
 
 @interface ItemDetailViewController : UITableViewController<UITextFieldDelegate>
+
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 @property (weak,nonatomic) id<ItemDetailViewControllerDelegate> delegate;
 @property (strong,nonatomic) ChecklistItem *itemToEdit;
+@property (nonatomic,weak)IBOutlet UISwitch *switchControl;
+@property (nonatomic,weak)IBOutlet UILabel *dueDateLabel;
+
 @end
