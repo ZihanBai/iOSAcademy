@@ -6,13 +6,13 @@
 //  Copyright (c) 2015 柏梓涵个人作品. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "CurrentLocationViewController.h"
 
-@interface FirstViewController ()
+@interface CurrentLocationViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation CurrentLocationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,4 +24,6 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)getLocation:(id)sender {
+}
 @end

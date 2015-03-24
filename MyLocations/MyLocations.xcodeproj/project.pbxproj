@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		18C4674D1AC05571004BD713 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4674C1AC05571004BD713 /* main.m */; };
 		18C467501AC05571004BD713 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4674F1AC05571004BD713 /* AppDelegate.m */; };
-		18C467531AC05572004BD713 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C467521AC05572004BD713 /* FirstViewController.m */; };
+		18C467531AC05572004BD713 /* CurrentLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C467521AC05572004BD713 /* CurrentLocationViewController.m */; };
 		18C467561AC05572004BD713 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C467551AC05572004BD713 /* SecondViewController.m */; };
 		18C467591AC05572004BD713 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C467571AC05572004BD713 /* Main.storyboard */; };
 		18C4675B1AC05572004BD713 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C4675A1AC05572004BD713 /* Images.xcassets */; };
@@ -33,8 +33,8 @@
 		18C4674C1AC05571004BD713 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		18C4674E1AC05571004BD713 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18C4674F1AC05571004BD713 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		18C467511AC05572004BD713 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		18C467521AC05572004BD713 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		18C467511AC05572004BD713 /* CurrentLocationViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CurrentLocationViewController.h; sourceTree = "<group>"; };
+		18C467521AC05572004BD713 /* CurrentLocationViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CurrentLocationViewController.m; sourceTree = "<group>"; };
 		18C467541AC05572004BD713 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		18C467551AC05572004BD713 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		18C467581AC05572004BD713 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,8 +86,8 @@
 			children = (
 				18C4674E1AC05571004BD713 /* AppDelegate.h */,
 				18C4674F1AC05571004BD713 /* AppDelegate.m */,
-				18C467511AC05572004BD713 /* FirstViewController.h */,
-				18C467521AC05572004BD713 /* FirstViewController.m */,
+				18C467511AC05572004BD713 /* CurrentLocationViewController.h */,
+				18C467521AC05572004BD713 /* CurrentLocationViewController.m */,
 				18C467541AC05572004BD713 /* SecondViewController.h */,
 				18C467551AC05572004BD713 /* SecondViewController.m */,
 				18C467571AC05572004BD713 /* Main.storyboard */,
@@ -226,7 +226,7 @@
 			files = (
 				18C467561AC05572004BD713 /* SecondViewController.m in Sources */,
 				18C467501AC05571004BD713 /* AppDelegate.m in Sources */,
-				18C467531AC05572004BD713 /* FirstViewController.m in Sources */,
+				18C467531AC05572004BD713 /* CurrentLocationViewController.m in Sources */,
 				18C4674D1AC05571004BD713 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -418,6 +418,7 @@
 				18C4676F1AC05572004BD713 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		18C467701AC05572004BD713 /* Build configuration list for PBXNativeTarget "MyLocationsTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +427,7 @@
 				18C467721AC05572004BD713 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
