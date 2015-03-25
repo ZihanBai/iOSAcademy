@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *longtitudeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *tagNutton;
+@property (weak, nonatomic) IBOutlet UIButton *tagButton;
 @property (weak, nonatomic) IBOutlet UIButton *getButton;
 
 - (IBAction)getLocation:(id)sender;
