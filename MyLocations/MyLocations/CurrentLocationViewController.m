@@ -12,11 +12,23 @@
 
 @end
 
-@implementation CurrentLocationViewController
+@implementation CurrentLocationViewController{
+    CLLocationManager *_locationManager;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder{
+    if ((self = [super initWithCoder:aDecoder])) {
+        _locationManager = [[CLLocationManager alloc]init];
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    if ([[[UIDevice currentDevice] systemVersion] doubleValue] > 8.0) {
+        [_locationManager requestWhenInUseAuthorization];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,5 +37,19 @@
 }
 
 - (IBAction)getLocation:(id)sender {
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+    [_locationManager startUpdatingLocation];
 }
+
+#pragma mark -CLLocationManagerDelegate
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
+    NSLog(@"定位失败:%@",error);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
+    CLLocation *newLocation = [locations lastObject];
+    NSLog(@"坐标已更新：%@",newLocation);
+}
+
 @end
