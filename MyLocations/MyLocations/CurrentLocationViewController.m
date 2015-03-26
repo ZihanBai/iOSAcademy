@@ -15,13 +15,19 @@
 @implementation CurrentLocationViewController{
     CLLocationManager *_locationManager;
     CLLocation *_location;
+    CLGeocoder *_geoCoder;
+    CLPlacemark *_placemark;
     NSError *_lastLocationError;
+    NSError *_lastGeocodingError;
     BOOL _updatingLocation;
+    BOOL _performingGeocoding;
+    
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if ((self = [super initWithCoder:aDecoder])) {
         _locationManager = [[CLLocationManager alloc]init];
+        _geoCoder = [[CLGeocoder alloc]init];
     }
     return self;
 }
@@ -47,10 +53,16 @@
     }else{
         _location = nil;
         _lastLocationError = nil;
+        _placemark = nil;
+        _lastGeocodingError = nil;
         [self startLocationManager];
     }
     [self updateLabels];
     [self configureGetButton];
+}
+
+-(NSString *)stringFromPlacemark:(CLPlacemark *)placemark{
+    return [NSString stringWithFormat:@"%@ %@\n%@ %@ %@",placemark.subThoroughfare,placemark.thoroughfare,placemark.locality,placemark.administrativeArea,placemark.postalCode];
 }
 
 -(void)updateLabels{
@@ -59,6 +71,14 @@
         self.longtitudeLabel.text = [NSString stringWithFormat:@"%.8f",_location.coordinate.longitude];
         self.tagButton.hidden = NO;
         self.messageLabel.text = @"";
+        
+        if (_placemark != nil) {
+            self.addressLabel.text = [self stringFromPlacemark:_placemark];
+        }else if (_performingGeocoding){
+            self.addressLabel.text = @"出错啦~";
+        }else{
+            self.addressLabel.text = @"没找到";
+        }
     }else{
         self.latitudeLabel.text = @"";
         self.longtitudeLabel.text = @"";
@@ -139,6 +159,21 @@
             [self stopLocationManager];
             [self configureGetButton];
         }
+    }
+    if (!_performingGeocoding) {
+        NSLog(@"Going to Geocoding");
+        _performingGeocoding = YES;
+        [_geoCoder reverseGeocodeLocation:_location completionHandler:^(NSArray *placemarks,NSError *error){
+            NSLog(@"Found placemarks:%@,error:%@",placemarks,error);
+            _lastGeocodingError = error;
+            if (error == nil && [placemarks count] > 0) {
+                _placemark = [placemarks lastObject];
+            }else{
+                _placemark = nil;
+            }
+            _performingGeocoding = NO;
+            [self updateLabels];
+        }];
     }
 }
 
