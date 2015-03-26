@@ -33,6 +33,7 @@
         [_locationManager requestWhenInUseAuthorization];
     }
     [self updateLabels];
+    [self configureGetButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,8 +42,15 @@
 }
 
 - (IBAction)getLocation:(id)sender {
-    [self startLocationManager];
+    if (_updatingLocation) {
+        [self stopLocationManager];
+    }else{
+        _location = nil;
+        _lastLocationError = nil;
+        [self startLocationManager];
+    }
     [self updateLabels];
+    [self configureGetButton];
 }
 
 -(void)updateLabels{
@@ -93,6 +101,14 @@
     }
 }
 
+-(void)configureGetButton{
+    if (_updatingLocation) {
+        [self.getButton setTitle:@"停停停" forState:UIControlStateNormal];
+    }else{
+        [self.getButton setTitle:@"获取当前所在位置" forState:UIControlStateNormal];
+    }
+}
+
 #pragma mark -CLLocationManagerDelegate
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
     NSLog(@"定位失败:%@",error);
@@ -102,14 +118,28 @@
     [self stopLocationManager];
     _lastLocationError = error;
     [self updateLabels];
+    [self configureGetButton];
 }
 
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
     CLLocation *newLocation = [locations lastObject];
     NSLog(@"坐标已更新：%@",newLocation);
-    _lastLocationError = nil;
-    _location = newLocation;
-    [self updateLabels];
+    if ([newLocation.timestamp timeIntervalSinceNow] < -5.0) {
+        return;
+    }
+    if (newLocation.horizontalAccuracy < 0) {
+        return;
+    }
+    if (_location == nil || _location.horizontalAccuracy > newLocation.horizontalAccuracy) {
+        _lastLocationError = nil;
+        _location = newLocation;
+        [self updateLabels];
+        if (newLocation.horizontalAccuracy <= _locationManager.desiredAccuracy) {
+            NSLog(@"定位完成");
+            [self stopLocationManager];
+            [self configureGetButton];
+        }
+    }
 }
 
 
