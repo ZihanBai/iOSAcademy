@@ -104,17 +104,31 @@
     
 }
 
+-(void)didTimeOut:(id)obj{
+    NSLog(@" oops,超时了");
+    if (_location == nil) {
+        [self stopLocationManager];
+        _lastLocationError = [NSError errorWithDomain:@"MyLocationsErrorDomain" code:1 userInfo:nil];
+        [self updateLabels];
+        [self configureGetButton];
+    }
+}
+
 -(void)startLocationManager{
     if ([CLLocationManager locationServicesEnabled]) {
         _locationManager.delegate = self;
         _locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
         [_locationManager startUpdatingLocation];
         _updatingLocation = YES;
+        
+        [self performSelector:@selector(didTimeOut:) withObject:nil afterDelay:60];
+        
     }
 }
 
 -(void)stopLocationManager{
     if (_updatingLocation) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(didTimeOut:) object:nil];
         [_locationManager stopUpdatingLocation];
         _locationManager.delegate = nil;
         _updatingLocation = NO;
@@ -150,6 +164,12 @@
     if (newLocation.horizontalAccuracy < 0) {
         return;
     }
+    
+    CLLocationDistance distance = MAXFLOAT;
+    if (_location != nil) {
+        distance = [newLocation distanceFromLocation:_location];
+    }
+    
     if (_location == nil || _location.horizontalAccuracy > newLocation.horizontalAccuracy) {
         _lastLocationError = nil;
         _location = newLocation;
@@ -160,6 +180,11 @@
             [self configureGetButton];
         }
     }
+    
+    if (distance > 0) {
+        _performingGeocoding = NO;
+    
+    
     if (!_performingGeocoding) {
         NSLog(@"Going to Geocoding");
         _performingGeocoding = YES;
@@ -174,6 +199,15 @@
             _performingGeocoding = NO;
             [self updateLabels];
         }];
+    }
+    }else if (distance < 1.0){
+        NSTimeInterval timeInterval = [newLocation.timestamp timeIntervalSinceDate:_location.timestamp];
+        if (timeInterval > 10) {
+            NSLog(@" 强制完成");
+            [self stopLocationManager];
+            [self updateLabels];
+            [self configureGetButton];
+        }
     }
 }
 
