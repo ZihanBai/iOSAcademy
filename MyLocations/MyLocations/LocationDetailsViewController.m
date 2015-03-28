@@ -7,6 +7,7 @@
 //
 
 #import "LocationDetailsViewController.h"
+#import "CategoryPickerViewController.h"
 
 @interface LocationDetailsViewController ()<UITextViewDelegate>
 
@@ -21,11 +22,13 @@
 
 @implementation LocationDetailsViewController{
     NSString *_descriptionText;
+    NSString *_categoryName;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if ((self = [super initWithCoder:aDecoder])) {
         _descriptionText = @"";
+        _categoryName = @"No Category";
         self.descriptionTextView.delegate = self;
     }
     return self;
@@ -51,11 +54,20 @@
     return [formatter stringFromDate:date];
 }
 
+-(void)hideKeyboard:(UIGestureRecognizer *)gestureRecognizer{
+    CGPoint point = [gestureRecognizer locationInView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:point];
+    if (indexPath != nil && indexPath.section == 0 && indexPath.row == 0) {
+        return;
+    }
+    [self.descriptionTextView resignFirstResponder];
+}
+
 -(void)viewDidLoad{
     [super viewDidLoad];
     
     self.descriptionTextView.text = _descriptionText;
-    self.categoryLabel.text = @"";
+    self.categoryLabel.text = _categoryName;
     
     self.latitudeLabel.text = [NSString stringWithFormat:@"%.8f",self.coordinate.latitude];
     self.longitudeLabel.text = [NSString stringWithFormat:@"%.8f",self.coordinate.longitude];
@@ -67,6 +79,10 @@
     }
     
     self.dateLabel.text = [self formateDate:[NSDate date]];
+    
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyboard:)];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    [self.tableView addGestureRecognizer:gestureRecognizer];
 }
 
 -(void)closeScreen{
@@ -80,6 +96,19 @@
 
 -(IBAction)cancel:(id)sender{
     [self closeScreen];
+}
+
+-(IBAction)categoryPickerDidPickCategory:(UIStoryboardSegue *)segue{
+    CategoryPickerViewController *viewController = segue.sourceViewController;
+    _categoryName = viewController.selectedCategoryName;
+    self.categoryLabel.text = _categoryName;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"PickCategory"]) {
+        CategoryPickerViewController *controller = segue.destinationViewController;
+        controller.selectedCategoryName = _categoryName;
+    }
 }
 
 #pragma mark -UITableViewDelegate
@@ -97,6 +126,20 @@
         return 44;
     }
     
+}
+
+-(NSIndexPath*)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0 || indexPath.section == 1) {
+        return indexPath;
+    }else{
+        return nil;
+    }
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0 && indexPath.row == 0) {
+        [self.descriptionTextView becomeFirstResponder];
+    }
 }
 
 #pragma mark -UITextViewDelegate
