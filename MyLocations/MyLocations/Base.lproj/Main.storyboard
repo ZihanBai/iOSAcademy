@@ -223,12 +223,12 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Data" textLabel="KeK-75-FQd" detailTextLabel="E3l-vW-uk5" style="IBUITableViewCellStyleValue1" id="jLh-PT-vEd">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Date" textLabel="KeK-75-FQd" detailTextLabel="E3l-vW-uk5" style="IBUITableViewCellStyleValue1" id="jLh-PT-vEd">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jLh-PT-vEd" id="VTv-zl-ft4">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Data" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KeK-75-FQd">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KeK-75-FQd">
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -264,12 +264,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addressLabel" destination="uAS-jP-YrH" id="0lU-bk-rMw"/>
-                        <outlet property="categoryLabel" destination="xZZ-Lx-bcF" id="K1c-DU-8Kl"/>
-                        <outlet property="dateLabel" destination="KeK-75-FQd" id="y7e-tN-vf2"/>
+                        <outlet property="addressLabel" destination="gUr-BI-YnS" id="6C6-6B-ZO6"/>
+                        <outlet property="categoryLabel" destination="tJd-mr-mDj" id="3fI-RX-YH5"/>
+                        <outlet property="dateLabel" destination="E3l-vW-uk5" id="Noc-FL-BcB"/>
                         <outlet property="descriptionTextView" destination="7dB-WR-FF1" id="MiO-ta-bDi"/>
-                        <outlet property="latitudeLabel" destination="ltW-II-xiw" id="VGy-kY-NcG"/>
-                        <outlet property="longitudeLabel" destination="0xT-mS-SaT" id="nw6-bN-Jd8"/>
+                        <outlet property="latitudeLabel" destination="ZXC-Kj-xJY" id="Jti-Wn-KSU"/>
+                        <outlet property="longitudeLabel" destination="W9C-Mn-od3" id="yHQ-ng-0Lt"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e7u-e8-MQf" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -97,12 +97,12 @@
 				18C467521AC05572004BD713 /* CurrentLocationViewController.m */,
 				18C467541AC05572004BD713 /* SecondViewController.h */,
 				18C467551AC05572004BD713 /* SecondViewController.m */,
+				1812165B1AC688580091706B /* LocationDetailsViewController.h */,
+				1812165C1AC688580091706B /* LocationDetailsViewController.m */,
 				18C467571AC05572004BD713 /* Main.storyboard */,
 				18C4675A1AC05572004BD713 /* Images.xcassets */,
 				18C4675C1AC05572004BD713 /* LaunchScreen.xib */,
 				18C4674A1AC05571004BD713 /* Supporting Files */,
-				1812165B1AC688580091706B /* LocationDetailsViewController.h */,
-				1812165C1AC688580091706B /* LocationDetailsViewController.m */,
 			);
 			path = MyLocations;
 			sourceTree = "<group>";
