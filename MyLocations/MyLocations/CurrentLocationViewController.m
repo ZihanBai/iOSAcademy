@@ -66,8 +66,10 @@
     if ([segue.identifier isEqualToString:@"TagLocation"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         LocationDetailsViewController *controller = (LocationDetailsViewController*)navigationController.topViewController;
+        
         controller.coordinate = _location.coordinate;
         controller.placemark = _placemark;
+        controller.managedObjectContext = self.managedObjectContext;
     }
 }
 

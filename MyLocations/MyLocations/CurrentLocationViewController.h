@@ -18,6 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *tagButton;
 @property (weak, nonatomic) IBOutlet UIButton *getButton;
+@property (nonatomic,strong)NSManagedObjectContext * managedObjectContext;
 
 - (IBAction)getLocation:(id)sender;
 
