@@ -11,6 +11,8 @@
 #import "HudView.h"
 #import "Location.h"
 
+
+
 @interface LocationDetailsViewController ()<UITextViewDelegate>
 
 @property(nonatomic,weak) IBOutlet UITextView *descriptionTextView;
@@ -109,7 +111,9 @@
     
     NSError *error;
     if(![self.managedObjectContext save:&error]){
-        NSLog(@"Error:%@",error);
+//        NSLog(@"Error:%@",error);
+//        abort();
+        FATAL_CORE_DATA_ERROR(error);
         abort();
     }
     

@@ -9,22 +9,34 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 #import "CurrentLocationViewController.h"
+#import "LocationDetailsViewController.h"
 
-@interface AppDelegate ()
+NSString * const ManagedObjectContextSaveDidFailNotification = @"ManagedObjectContextSaveDidFailNotification";
+
+@interface AppDelegate ()<UIAlertViewDelegate>
 
 @property (nonatomic,strong)NSManagedObjectContext *managedObjectContext;
 @property (nonatomic,strong)NSManagedObjectModel *managedObjectModel;
-@property (nonatomic,strong)NSPersistentStoreCoordinator *persistentCoordinator;
+@property (nonatomic,strong)NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @end
 
 @implementation AppDelegate
 
+- (void)fatalCoreDataError:(NSNotificationCenter *)notificationCenter
+{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:NSLocalizedString(@"Internal Error", nil) message:NSLocalizedString(@"There was a fatal error in the app and it cannot continue.\n\nPress Ok to ternimate the app.Sorry for the inconvinience.", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"OK", nil) otherButtonTitles:nil, nil];
+    [alertView show];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     CurrentLocationViewController *controller = (CurrentLocationViewController *)tabBarController.viewControllers[0];
     controller.managedObjectContext = self.managedObjectContext;
+    
+    //监听错误通知
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(fatalCoreDataError:) name:ManagedObjectContextSaveDidFailNotification object:nil];
+    
     return YES;
 }
 
@@ -72,28 +84,44 @@
     return [[self documentsDirectory]stringByAppendingPathComponent:@"DataStore.sqlite"];
 }
 
--(NSPersistentStoreCoordinator *)persistentCoordinator{
-    if (_persistentCoordinator == nil) {
+-(NSPersistentStoreCoordinator*)persistentStoreCoordinator{
+    
+    if(_persistentStoreCoordinator ==nil){
+        
         NSURL *storeURL = [NSURL fileURLWithPath:[self dataStorePath]];
-        _persistentCoordinator = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:self.managedObjectModel];
+        
+        _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:self.managedObjectModel];
+        
         NSError *error;
-        if (![_persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
+        
+        if(![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]){
             NSLog(@"Error adding persistent store %@, %@",error,[error userInfo]);
+            
             abort();
+            
         }
+        
+        
     }
-    return _persistentCoordinator;
+    return _persistentStoreCoordinator;
+    
 }
 
 -(NSManagedObjectContext *)managedObjectContext{
     if (_managedObjectContext == nil) {
-        NSPersistentStoreCoordinator *coordinator = self.persistentCoordinator;
+        NSPersistentStoreCoordinator *coordinator = self.persistentStoreCoordinator;
         if (coordinator != nil) {
             _managedObjectContext = [[NSManagedObjectContext alloc]init];
             [_managedObjectContext setPersistentStoreCoordinator:coordinator];
         }
     }
     return _managedObjectContext;
+}
+
+#pragma mark - UIAlertViewDelegate
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    abort();
 }
 
 @end
