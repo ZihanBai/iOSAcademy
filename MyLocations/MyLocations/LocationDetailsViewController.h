@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface LocationDetailsViewController : UITableViewController
+@interface LocationDetailsViewController : UITableViewController<UITextViewDelegate>
 
 @property(nonatomic,assign)CLLocationCoordinate2D coordinate;
 @property(nonatomic,strong)CLPlacemark *placemark;

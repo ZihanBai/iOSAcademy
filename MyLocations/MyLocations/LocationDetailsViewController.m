@@ -9,6 +9,7 @@
 #import "LocationDetailsViewController.h"
 #import "CategoryPickerViewController.h"
 #import "HudView.h"
+#import "Location.h"
 
 @interface LocationDetailsViewController ()<UITextViewDelegate>
 
@@ -24,13 +25,15 @@
 @implementation LocationDetailsViewController{
     NSString *_descriptionText;
     NSString *_categoryName;
+    NSDate *_date;
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if ((self = [super initWithCoder:aDecoder])) {
         _descriptionText = @"";
         _categoryName = @"No Category";
-        self.descriptionTextView.delegate = self;
+        _date = [NSDate date];
+        //self.descriptionTextView.delegate = self;
     }
     return self;
 }
@@ -79,7 +82,7 @@
         self.addressLabel.text = @"No Adress Found!";
     }
     
-    self.dateLabel.text = [self formateDate:[NSDate date]];
+    self.dateLabel.text = [self formateDate:_date];
     
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(hideKeyboard:)];
     gestureRecognizer.cancelsTouchesInView = NO;
@@ -94,6 +97,22 @@
     NSLog(@"description: %@",_descriptionText);
     HudView *view = [HudView hudInView:self.navigationController.view animated:YES];
     view.text = @"Taggled";
+    
+    //交给core data 管理
+    Location *location = [NSEntityDescription insertNewObjectForEntityForName:@"Locations" inManagedObjectContext:_managedObjectContext];
+    location.locationsDescription = _descriptionText;
+    location.category = _categoryName;
+    location.latitude = @(self.coordinate.latitude);
+    location.longtitude = @(self.coordinate.longitude);
+    location.date = _date;
+    location.placemark = _placemark;
+    
+    NSError *error;
+    if(![self.managedObjectContext save:&error]){
+        NSLog(@"Error:%@",error);
+        abort();
+    }
+    
 //    [self closeScreen];
     [self performSelector:@selector(closeScreen) withObject:nil afterDelay:0.6f];
 }
@@ -146,14 +165,15 @@
     }
 }
 
-#pragma mark -UITextViewDelegate
+#pragma mark - UITextViewDelegate
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+-(BOOL)textView:(UITextView*)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     _descriptionText = [textView.text stringByReplacingCharactersInRange:range withString:text];
     return YES;
 }
 
--(void)textViewDidEndEditing:(UITextView *)textView{
+-(void)textViewDidEndEditing:(UITextView*)textView{
+    
     _descriptionText = textView.text;
 }
 
